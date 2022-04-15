@@ -15,27 +15,10 @@
  */
 package booleanalgebrasimplifier;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  *
  * @author Yohan Sandun
  */
-public class Main {
-    
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter expression: ");
-        String input = scanner.nextLine();
-        
-        Tokenizer tokenizer = new Tokenizer(input);
-        Parser parser = new Parser(tokenizer.getTokens());
-        Node node = parser.parse();
-        
-        VariableCounter counter = new VariableCounter(node);
-        
-        
-    }
+public class TruthTable {
     
 }
