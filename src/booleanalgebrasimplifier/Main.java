@@ -30,11 +30,9 @@ public class Main {
         String input = scanner.nextLine();
         
         Tokenizer tokenizer = new Tokenizer(input);
-        ArrayList<Token> tokens = tokenizer.getTokens();
+        Parser parser = new Parser(tokenizer.getTokens());
         
-        for (int i = 0; i < tokens.size(); i++) {
-            System.out.print(tokens.get(i).getType() + " ");
-        }
+        System.out.println(parser.parse());
         
     }
     
