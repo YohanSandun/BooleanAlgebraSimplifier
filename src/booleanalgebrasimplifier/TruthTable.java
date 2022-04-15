@@ -15,10 +15,56 @@
  */
 package booleanalgebrasimplifier;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author Yohan Sandun
  */
 public class TruthTable {
+
+    private boolean[] outputs;
+    private boolean[][] inputs;
+    private ArrayList<Character> vars;
+    
+    public TruthTable(int varCount, Node node, ArrayList<Character> vars) {
+        this.vars = vars;
+        
+        if (varCount == 1) 
+            prepareTable1(node);
+    }
+    
+    public void print() {
+        for (int i = 0; i < vars.size(); i++) 
+            System.out.print("| " + vars.get(i) + " ");
+        System.out.println("| F | ");
+        
+        for (int i = 0; i < inputs.length; i++) {
+            for (int j = 0; j < inputs[i].length; j++) {
+                System.out.print("| "+(inputs[i][j] ? "1" : "0") );
+            }
+            System.out.println(" | " + (outputs[i] ? "1" : "0") + " | ");
+        }
+    }
+    
+    // For one variable
+    private void prepareTable1(Node node) {
+        outputs = new boolean[2];
+        inputs = new boolean[2][1];
+        
+        HashMap<Character, Boolean> map = new HashMap<Character, Boolean>();
+        Interpreter ip = new Interpreter(map);
+        
+        inputs[0][0] = false;
+        map.put(vars.get(0), false);
+        outputs[0] = ip.run(node);
+        map.clear();
+        
+        inputs[1][0] = true;
+        map.put(vars.get(0), true);
+        outputs[1] = ip.run(node);
+        map.clear();
+    }
     
 }

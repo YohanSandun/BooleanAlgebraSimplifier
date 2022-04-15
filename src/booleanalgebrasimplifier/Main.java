@@ -34,7 +34,11 @@ public class Main {
         Node node = parser.parse();
         
         VariableCounter counter = new VariableCounter(node);
+        int varCount = counter.getVarCount();
+        ArrayList<Character> vars = counter.getVars();
         
+        TruthTable tt = new TruthTable(varCount, node, vars);
+        tt.print();
         
     }
     

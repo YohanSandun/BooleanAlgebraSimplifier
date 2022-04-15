@@ -36,7 +36,11 @@ public class VariableCounter {
         count(node);
         return vars.size();
     }
-    
+
+    public ArrayList<Character> getVars() {
+        return vars;
+    }
+
     private void count(Node node) {
         if (node.getType() == NodeType.VARIABLE) {
             VarNode vn = (VarNode)node;
