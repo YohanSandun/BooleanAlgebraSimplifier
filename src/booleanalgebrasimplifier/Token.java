@@ -15,27 +15,46 @@
  */
 package booleanalgebrasimplifier;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  *
  * @author Yohan Sandun
  */
-public class Main {
+public class Token {
     
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter expression: ");
-        String input = scanner.nextLine();
-        
-        Tokenizer tokenizer = new Tokenizer(input);
-        ArrayList<Token> tokens = tokenizer.getTokens();
-        
-        for (int i = 0; i < tokens.size(); i++) {
-            System.out.print(tokens.get(i).getType() + " ");
-        }
-        
+    public enum TokenType {
+        VARIABLE,
+        AND,
+        OR,
+        NOT,
+        LP,
+        RP
     }
     
+    private TokenType type;
+    private char variable;
+
+    public TokenType getType() {
+        return type;
+    }
+
+    public Token(TokenType type, char variable) {
+        this.type = type;
+        this.variable = variable;
+    }
+
+    public Token(TokenType type) {
+        this.type = type;
+    }
+    
+    public void setType(TokenType type) {
+        this.type = type;
+    }
+
+    public char getVariable() {
+        return variable;
+    }
+
+    public void setVariable(char variable) {
+        this.variable = variable;
+    }
 }
